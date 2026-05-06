@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>出張イタリアン moja｜美味しいをダイレクトに</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green:       #5C7A52;
+    --green-light: #7A9E6E;
+    --green-pale:  #EDF2E9;
+    --red:         #B85C3A;
+    --red-light:   #D0704E;
+    --red-pale:    #FAF0EA;
+    --warm-amber:  #C4873A;
+    --white:       #FFFDF8;
+    --off-white:   #FAF6EF;
+    --cream:       #F3EBD8;
+    --gray-light:  #F0EBE2;
+    --gray:        #9A9086;
+    --text:        #3A2E26;
+    --text-light:  #7A6E64;
+    --border:      rgba(92,122,82,0.2);
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 400;
+    background: var(--off-white);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ===== NOISE TEXTURE ===== */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.35;
+  }
+
+  /* ===== HEADER NAV ===== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(250,246,239,0.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid var(--cream);
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 58px;
+  }
+
+  .nav-logo {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .nav-logo span {
+    background: var(--green);
+    color: #fff;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 99px;
+    font-weight: 500;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: color 0.2s;
+    letter-spacing: 0.03em;
+  }
+
+  .nav-links a:hover { color: var(--green); }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100svh;
+    background:
+      radial-gradient(ellipse 120% 80% at 30% 60%, rgba(92,122,82,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 100% 70% at 75% 30%, rgba(184,92,58,0.10) 0%, transparent 55%),
+      linear-gradient(160deg, #F5EFE2 0%, #FAF6EF 45%, #F5EDE0 100%);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: 58px;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0; right: 0;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--off-white));
+    pointer-events: none;
+  }
+
+  /* 装飾的なイタリア国旗ライン */
+  .hero-deco {
+    position: absolute;
+    top: 0; left: 0;
+    width: 5px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--green) 33.3%, #fff 33.3%, #fff 66.6%, var(--red) 66.6%);
+    opacity: 0.6;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 52px 24px 72px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(92,122,82,0.12);
+    color: var(--green);
+    border: 1px solid rgba(92,122,82,0.3);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 18px;
+    border-radius: 99px;
+    letter-spacing: 0.12em;
+    margin-bottom: 28px;
+    animation: fadeDown 0.8s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(38px, 9vw, 76px);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    animation: fadeDown 0.8s ease 0.15s both;
+  }
+
+  .hero-title .accent-green { color: var(--green); }
+  .hero-title .accent-red   { color: var(--red); }
+
+  .hero-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: clamp(15px, 3vw, 20px);
+    color: var(--warm-amber);
+    margin-top: 10px;
+    letter-spacing: 0.04em;
+    animation: fadeDown 0.8s ease 0.25s both;
+  }
+
+  .hero-sub {
+    font-size: clamp(14px, 2.5vw, 16px);
+    font-weight: 400;
+    color: var(--text-light);
+    margin-top: 20px;
+    line-height: 2;
+    animation: fadeDown 0.8s ease 0.35s both;
+  }
+
+  .hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 28px;
+    animation: fadeDown 0.8s ease 0.45s both;
+  }
+
+  .chip {
+    background: var(--white);
+    border: 1.5px solid rgba(92,122,82,0.35);
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 7px 16px;
+    border-radius: 99px;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+
+  .chip.red {
+    border-color: rgba(184,92,58,0.35);
+    color: var(--red);
+  }
+
+  .hero-cta {
+    margin-top: 36px;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: fadeDown 0.8s ease 0.55s both;
+  }
+
+  .btn {
+    display: inline-block;
+    text-decoration: none;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-weight: 500;
+    border-radius: 99px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.04em;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.14);
+  }
+
+  .btn-green {
+    background: var(--green);
+    color: #fff;
+    font-size: 14px;
+    padding: 15px 36px;
+  }
+
+  .btn-outline {
+    background: transparent;
+    border: 1.5px solid var(--green);
+    color: var(--green);
+    font-size: 13px;
+    padding: 14px 24px;
+  }
+
+  /* ===== SECTION BASE ===== */
+  section { padding: 72px 20px; }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--green);
+    letter-spacing: 0.12em;
+    margin-bottom: 10px;
+  }
+
+  .section-eyebrow::before,
+  .section-eyebrow::after {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--green-light);
+    opacity: 0.6;
+  }
+
+  .section-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(22px, 4vw, 34px);
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+  }
+
+  .section-desc {
+    margin-top: 12px;
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 2;
+  }
+
+  /* ===== SCENE CARDS ===== */
+  .scenes { background: var(--white); }
+
+  .scene-grid {
+    max-width: 860px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  @media (min-width: 600px) {
+    .scene-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .scene-card {
+    border-radius: 18px;
+    padding: 36px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1.5px solid transparent;
+  }
+
+  .scene-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.09);
+  }
+
+  .scene-card.green-card {
+    background: var(--green-pale);
+    border-color: rgba(92,122,82,0.25);
+  }
+
+  .scene-card.red-card {
+    background: var(--red-pale);
+    border-color: rgba(184,92,58,0.25);
+  }
+
+  .scene-emoji {
+    font-size: 44px;
+    display: block;
+    margin-bottom: 18px;
+  }
+
+  .scene-card h3 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 19px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+  }
+
+  .scene-card.green-card h3 { color: var(--green); }
+  .scene-card.red-card h3   { color: var(--red); }
+
+  .scene-card p {
+    font-size: 14px;
+    line-height: 2;
+    color: var(--text-light);
+  }
+
+  .scene-tag {
+    display: inline-block;
+    margin-top: 18px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 99px;
+    letter-spacing: 0.06em;
+  }
+
+  .green-card .scene-tag { background: var(--green); color: #fff; }
+  .red-card .scene-tag   { background: var(--red);   color: #fff; }
+
+  /* ===== PLANS ===== */
+  .plans { background: var(--gray-light); }
+
+  .plan-list {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .plan-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-left: 5px solid var(--green);
+    transition: transform 0.25s, box-shadow 0.25s;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    border-right: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  @media (min-width: 600px) {
+    .plan-card {
+      flex-direction: row;
+      align-items: center;
+      padding: 32px 36px;
+    }
+  }
+
+  .plan-card:nth-child(2) { border-left-color: var(--red); }
+  .plan-card:nth-child(3) { border-left-color: var(--warm-amber); }
+
+  .plan-card:hover {
+    transform: translateX(3px);
+    box-shadow: 0 6px 28px rgba(0,0,0,0.07);
+  }
+
+  .plan-body { flex: 1; }
+
+  .plan-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    padding: 3px 12px;
+    border-radius: 99px;
+    margin-bottom: 10px;
+    background: var(--green-pale);
+    color: var(--green);
+  }
+
+  .plan-card:nth-child(2) .plan-label { background: var(--red-pale); color: var(--red); }
+  .plan-card:nth-child(3) .plan-label { background: #FFF6E8; color: var(--warm-amber); }
+
+  .plan-card h3 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
+  }
+
+  .plan-card p {
+    font-size: 13px;
+    line-height: 2;
+    color: var(--text-light);
+  }
+
+  .plan-price {
+    flex-shrink: 0;
+    min-width: 130px;
+  }
+
+  @media (max-width: 599px) {
+    .plan-price { text-align: left; }
+  }
+
+  @media (min-width: 600px) {
+    .plan-price { text-align: right; }
+  }
+
+  .price-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .price-unit  { font-size: 12px; color: var(--text-light); margin-top: 4px; }
+  .price-note  { font-size: 11px; font-weight: 700; margin-top: 6px; color: var(--green); letter-spacing: 0.06em; }
+  .plan-card:nth-child(2) .price-note { color: var(--red); }
+
+  /* ===== NOTES ===== */
+  .notes-wrap {
+    max-width: 800px;
+    margin: 28px auto 0;
+    background: var(--white);
+    border-radius: 14px;
+    padding: 24px 24px;
+    border: 1.5px dashed rgba(92,122,82,0.3);
+  }
+
+  @media (min-width: 600px) {
+    .notes-wrap { padding: 28px 32px; }
+  }
+
+  .notes-wrap h4 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 14px;
+    letter-spacing: 0.04em;
+  }
+
+  .notes-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  @media (min-width: 600px) {
+    .notes-list { grid-template-columns: 1fr 1fr; gap: 9px 28px; }
+  }
+
+  .notes-list li {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.7;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .notes-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-weight: 700;
+    font-size: 12px;
+    top: 2px;
+  }
+
+  /* ===== PHILOSOPHY ===== */
+  .philosophy {
+    background: var(--cream);
+    border-top: 1px solid rgba(92,122,82,0.12);
+    border-bottom: 1px solid rgba(92,122,82,0.12);
+  }
+
+  .philosophy .section-eyebrow { color: var(--green); }
+  .philosophy .section-eyebrow::before,
+  .philosophy .section-eyebrow::after { background: var(--green-light); }
+  .philosophy .section-title { color: var(--text); }
+  .philosophy .section-desc  { color: var(--text-light); }
+
+  .phil-grid {
+    max-width: 760px;
+    margin: 36px auto 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  @media (min-width: 600px) {
+    .phil-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .phil-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 24px;
+    border: 1px solid rgba(92,122,82,0.15);
+    transition: box-shadow 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .phil-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--green-light);
+    opacity: 0.5;
+  }
+
+  .phil-card:hover {
+    box-shadow: 0 6px 24px rgba(92,122,82,0.12);
+    transform: translateY(-2px);
+  }
+
+  .phil-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--green);
+    margin-bottom: 8px;
+  }
+
+  .phil-text {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.9;
+  }
+
+  /* ===== CHEF PROFILE ===== */
+  .chef-profile {
+    background: var(--off-white);
+    padding: 72px 20px;
+  }
+
+  .chef-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+  }
+
+  @media (min-width: 640px) {
+    .chef-inner {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 52px;
+    }
+  }
+
+  .chef-photo-wrap {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .chef-photo-placeholder {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 2.5px dashed rgba(92,122,82,0.45);
+    background: var(--green-pale);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .chef-photo-placeholder:hover {
+    background: #e0ead9;
+    border-color: var(--green);
+  }
+
+  @media (min-width: 640px) {
+    .chef-photo-placeholder {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  .chef-photo-placeholder svg {
+    width: 36px;
+    height: 36px;
+    color: var(--green);
+    opacity: 0.6;
+  }
+
+  .chef-photo-placeholder .photo-hint {
+    font-size: 12px;
+    color: var(--green);
+    font-weight: 500;
+    opacity: 0.7;
+    text-align: center;
+    line-height: 1.5;
+    padding: 0 16px;
+  }
+
+  .chef-photo-note {
+    font-size: 11px;
+    color: var(--text-light);
+    text-align: center;
+    line-height: 1.6;
+    opacity: 0.7;
+  }
+
+  .chef-info {
+    flex: 1;
+    text-align: center;
+  }
+
+  @media (min-width: 640px) {
+    .chef-info { text-align: left; }
+  }
+
+  .chef-eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--green);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+
+  .chef-name {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(22px, 4vw, 28px);
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    letter-spacing: 0.04em;
+  }
+
+  .chef-name-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--text-light);
+    letter-spacing: 0.12em;
+    margin-bottom: 18px;
+  }
+
+  .chef-divider {
+    width: 40px;
+    height: 2px;
+    background: var(--green-light);
+    margin: 0 auto 18px;
+    opacity: 0.6;
+  }
+
+  @media (min-width: 640px) {
+    .chef-divider { margin: 0 0 18px; }
+  }
+
+  .chef-bio {
+    font-size: 14px;
+    color: var(--text-light);
+    line-height: 2.1;
+  }
+
+  .chef-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+    justify-content: center;
+  }
+
+  @media (min-width: 640px) {
+    .chef-tags { justify-content: flex-start; }
+  }
+
+  .chef-tag {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 13px;
+    border-radius: 99px;
+    background: var(--green-pale);
+    color: var(--green);
+    letter-spacing: 0.06em;
+    border: 1px solid rgba(92,122,82,0.2);
+  }
+
+  /* ===== INSTAGRAM ===== */
+  .instagram { background: var(--white); }
+
+  .insta-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .insta-icon {
+    width: 32px; height: 32px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .insta-icon svg { width: 18px; height: 18px; fill: #fff; }
+
+  .insta-feed-grid {
+    max-width: 920px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  @media (min-width: 600px) {
+    .insta-feed-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  .insta-placeholder {
+    aspect-ratio: 1;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    border: 1.5px dashed rgba(92,122,82,0.22);
+    background: var(--off-white);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    text-decoration: none;
+  }
+
+  .insta-placeholder:hover {
+    background: var(--green-pale);
+    transform: scale(1.02);
+  }
+
+  .insta-placeholder span {
+    font-size: 12px;
+    color: var(--text-light);
+    font-weight: 400;
+    text-align: center;
+    padding: 0 14px;
+    line-height: 1.6;
+  }
+
+  .insta-embed-note {
+    max-width: 920px;
+    margin: 18px auto 0;
+    text-align: center;
+    font-size: 12px;
+    color: var(--gray);
+    line-height: 1.9;
+  }
+
+  .insta-embed-note a { color: var(--green); font-weight: 500; }
+
+  .insta-follow-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 28px;
+  }
+
+  .btn-insta {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    text-decoration: none;
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366);
+    color: #fff;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 13px 28px;
+    border-radius: 99px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .btn-insta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(200,48,42,0.3);
+  }
+
+  /* ===== CTA ===== */
+  .cta-section {
+    background: var(--red);
+    text-align: center;
+    padding: 72px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 50%, rgba(255,255,255,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 50%, rgba(0,0,0,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .cta-section h2 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.6;
+    margin-bottom: 12px;
+    position: relative;
+    letter-spacing: 0.04em;
+  }
+
+  .cta-section p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+    line-height: 2;
+    margin-bottom: 32px;
+    position: relative;
+  }
+
+  .btn-white {
+    display: inline-block;
+    background: #fff;
+    color: var(--red);
+    font-size: 14px;
+    font-weight: 700;
+    padding: 15px 40px;
+    border-radius: 99px;
+    text-decoration: none;
+    font-family: 'Noto Sans JP', sans-serif;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    letter-spacing: 0.04em;
+  }
+
+  .btn-white:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+  }
+
+  .cta-note {
+    margin-top: 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    position: relative;
+    letter-spacing: 0.06em;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #2C2420;
+    padding: 40px 24px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--green-light);
+    margin-bottom: 6px;
+    letter-spacing: 0.04em;
+  }
+
+  .footer-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 20px;
+    letter-spacing: 0.04em;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.2s;
+    letter-spacing: 0.04em;
+  }
+
+  .footer-links a:hover { color: rgba(255,255,255,0.8); }
+
+  .footer-copy {
+    margin-top: 20px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.06em;
+  }
+
+  /* ===== REVEAL ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== MOBILE ONLY ===== */
+  @media (max-width: 599px) {
+    .nav-links { display: none; }
+    .hero-content { padding: 44px 16px 64px; }
+    section { padding: 56px 16px; }
+    .notes-wrap { padding: 20px 16px; }
+    .hero-cta { flex-direction: column; align-items: center; gap: 10px; }
+    .btn-outline { display: block; text-align: center; width: fit-content; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    🍝 出張イタリアン moja
+    <span>神戸発</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#scenes">こんな方に</a></li>
+    <li><a href="#plans">料金プラン</a></li>
+    <li><a href="#chef">シェフ紹介</a></li>
+    <li><a href="#instagram">インスタ</a></li>
+    <li><a href="#contact">お問い合わせ</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-deco"></div>
+  <div class="hero-content">
+    <span class="hero-badge">🍕 神戸を中心に出張中</span>
+    <h1 class="hero-title">
+      <span class="accent-green">美味しい</span>を<br>
+      ダイレクトに<span class="accent-red">。</span>
+    </h1>
+    <p class="hero-tagline">La cucina italiana a casa tua</p>
+    <p class="hero-sub">
+      ご自宅にシェフがお伺いして<br>
+      本格イタリア料理をそのままお届けします
+    </p>
+    <div class="hero-chips">
+      <span class="chip">🥂 ホームパーティー</span>
+      <span class="chip">👨‍👩‍👧 家族の集まり</span>
+      <span class="chip red">🍱 作り置き</span>
+      <span class="chip red">🔥 BBQ</span>
+    </div>
+    <div class="hero-cta">
+      <a href="https://www.instagram.com/blu_bianco_moja2009/" target="_blank" class="btn btn-green">
+        📩 インスタからDMする
+      </a>
+      <a href="#plans" class="btn btn-outline">料金を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- SCENES -->
+<section class="scenes" id="scenes">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">こんな方に</p>
+    <h2 class="section-title">どんなシーンで使えるの？</h2>
+    <p class="section-desc">日常のちょっと特別な日も、毎日の食卓も。mojaがサポートします。</p>
+  </div>
+  <div class="scene-grid">
+    <div class="scene-card green-card reveal">
+      <span class="scene-emoji">🥂</span>
+      <h3>ホームパーティー・お食事会</h3>
+      <p>
+        家族の集まり、友人との記念日、親戚が集まる特別な日に。<br>
+        気兼ねなく自宅でゆっくり、本格イタリアンのひとときを。<br><br>
+        仕込みから調理・後片付けまでおまかせください。<br>
+        お店では味わえない"ダイレクトな美味しさ"をどうぞ。
+      </p>
+      <span class="scene-tag">食材費込み・6名〜</span>
+    </div>
+    <div class="scene-card red-card reveal">
+      <span class="scene-emoji">🍱</span>
+      <h3>お惣菜作り置きサービス</h3>
+      <p>
+        忙しい毎日の、心強い味方。<br>
+        週に一度シェフが訪問し、4日〜1週間分の作り置きをお作りします。<br><br>
+        約8〜12品の手作り惣菜で、毎日の食卓に<br>
+        ほっとする「安心できる美味しさ」を。
+      </p>
+      <span class="scene-tag">3時間パック・食材持込OK</span>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="plans" id="plans">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">Pricing</p>
+    <h2 class="section-title">料金プラン</h2>
+    <p class="section-desc">すべてのプランで、買い物代行費は無料です。</p>
+  </div>
+
+  <div class="plan-list">
+    <div class="plan-card reveal">
+      <div class="plan-body">
+        <span class="plan-label">🥂 ホームパーティー</span>
+        <h3>お食事会・ホームパーティープラン</h3>
+        <p>
+          6名様まで　お一人様 ¥10,000（食材費込）<br>
+          7名様以降　追加お一人様ごとに ¥7,000（食材費込）<br>
+          ご自宅で、本格イタリア料理をお楽しみいただけます。
+        </p>
+      </div>
+      <div class="plan-price">
+        <div class="price-num">¥10,000</div>
+        <div class="price-unit">〜 / お一人様</div>
+        <div class="price-note">食材費込み</div>
+      </div>
+    </div>
+
+    <div class="plan-card reveal">
+      <div class="plan-body">
+        <span class="plan-label">🍱 作り置き</span>
+        <h3>お惣菜作り置きプラン</h3>
+        <p>
+          3時間パック　¥10,000（食材費別）<br>
+          目安：約8〜12品 ／ 約4日〜1週間分<br>
+          ご自宅にある食材を使用する場合は食材費不要。
+        </p>
+      </div>
+      <div class="plan-price">
+        <div class="price-num">¥10,000</div>
+        <div class="price-unit">3時間パック</div>
+        <div class="price-note">食材持込可</div>
+      </div>
+    </div>
+
+    <div class="plan-card reveal">
+      <div class="plan-body">
+        <span class="plan-label">🔥 BBQ</span>
+        <h3>料理人付き BBQプラン</h3>
+        <p>
+          4時間パック　¥20,000（食材費別）<br>
+          ご指定の場所へ伺い、特別なひとときを演出します。<br>
+          人数が多いほどお得です。
+        </p>
+      </div>
+      <div class="plan-price">
+        <div class="price-num">¥20,000</div>
+        <div class="price-unit">4時間パック</div>
+        <div class="price-note" style="color:var(--warm-amber)">食材費別</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes-wrap reveal">
+    <h4>📋 全プラン共通の注意事項</h4>
+    <ul class="notes-list">
+      <li>買い物代行費は無料です</li>
+      <li>食器・保存容器・一部調理器具はご自宅のものを使用します</li>
+      <li>必要に応じて食器のレンタルも承ります</li>
+      <li>駐車場・高速道路料金は別途実費を頂戴します</li>
+      <li>神戸以外への出張も対応可能です</li>
+      <li>その他ご要望はお気軽にご相談ください</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PHILOSOPHY -->
+<section class="philosophy">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">Philosophy</p>
+    <h2 class="section-title">mojaの想い</h2>
+    <p class="section-desc">
+      「美味しいと嬉しいを届けることで、日常をより豊かにする」<br>
+      それがmojaの存在理由です。
+    </p>
+  </div>
+  <div class="phil-grid">
+    <div class="phil-card reveal">
+      <p class="phil-label">Mission · 使命</p>
+      <p class="phil-text">団欒を作るお手伝いをし、料理の楽しさを知ってもらう</p>
+    </div>
+    <div class="phil-card reveal">
+      <p class="phil-label">Vision · ビジョン</p>
+      <p class="phil-text">困ったときの「助けて欲しい」に応えられる、皆の駆け込み寺になる</p>
+    </div>
+    <div class="phil-card reveal">
+      <p class="phil-label">Value · バリュー</p>
+      <p class="phil-text">向上心を持ち、より良いサービスを常に考え続ける</p>
+    </div>
+    <div class="phil-card reveal">
+      <p class="phil-label">Spirit · スピリット</p>
+      <p class="phil-text">誠実に。スローガン：「美味しいをダイレクトに」</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHEF PROFILE -->
+<section class="chef-profile" id="chef">
+  <div class="section-header reveal">
+    <p class="section-eyebrow">Chef</p>
+    <h2 class="section-title">シェフ紹介</h2>
+    <p class="section-desc">料理への想いと、お客様への誠実さ。それがmojaの味です。</p>
+  </div>
+  <div class="chef-inner reveal">
+    <div class="chef-photo-wrap">
+      <div class="chef-photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+          <circle cx="12" cy="13" r="4"/>
+        </svg>
+        <span class="photo-hint">シェフの写真<br>を挿入</span>
+      </div>
+      <p class="chef-photo-note">※ 写真データをご用意いただければ<br>こちらに反映します</p>
+    </div>
+    <div class="chef-info">
+      <p class="chef-eyebrow">Chef Profile</p>
+      <h3 class="chef-name">シェフ名</h3>
+      <p class="chef-name-en">Chef Name</p>
+      <div class="chef-divider"></div>
+      <p class="chef-bio">
+        神戸を拠点に、ご家庭への出張料理を行っています。<br>
+        イタリアの家庭料理が持つ「素材を活かした素直な美味しさ」を大切にしており、<br>
+        特別な日も、日常の食卓も、真心を込めてお作りします。<br><br>
+        「食卓を囲む時間が、一番のご馳走だと思っています。」
+      </p>
+      <div class="chef-tags">
+        <span class="chef-tag">イタリア家庭料理</span>
+        <span class="chef-tag">作り置き</span>
+        <span class="chef-tag">ホームパーティー</span>
+        <span class="chef-tag">神戸出張</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM FEED -->
+<section class="instagram" id="instagram">
+  <div class="section-header reveal">
+    <div class="insta-header-row">
+      <div class="insta-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </div>
+      <p class="section-eyebrow" style="margin-bottom:0">@blu_bianco_moja2009</p>
+    </div>
+    <h2 class="section-title">Instagramをチェック！</h2>
+    <p class="section-desc">料理の様子や作り置きメニューなど、最新情報を発信中です</p>
+  </div>
+
+  <div class="insta-feed-grid reveal">
+    <a href="https://www.instagram.com/blu_bianco_moja2009/" target="_blank" class="insta-placeholder">
+      <span style="font-size:28px">🍝</span>
+      <span>パスタ料理<br>の投稿</span>
+    </a>
+    <a href="https://www.instagram.com/blu_bianco_moja2009/" target="_blank" class="insta-placeholder">
+      <span style="font-size:28px">🥂</span>
+      <span>パーティーの<br>様子</span>
+    </a>
+    <a href="https://www.instagram.com/blu_bianco_moja2009/" target="_blank" class="insta-placeholder">
+      <span style="font-size:28px">🍱</span>
+      <span>作り置き<br>メニュー</span>
+    </a>
+    <a href="https://www.instagram.com/blu_bianco_moja2009/" target="_blank" class="insta-placeholder">
+      <span style="font-size:28px">🔥</span>
+      <span>BBQの<br>様子</span>
+    </a>
+    <a href="https://www.instagram.com/blu_bianco_moja2009/" target="_blank" class="insta-placeholder">
+      <span style="font-size:28px">🍕</span>
+      <span>料理の<br>こだわり</span>
+    </a>
+    <a href="https://www.instagram.com/blu_bianco_moja2009/" target="_blank" class="insta-placeholder">
+      <span style="font-size:28px">📸</span>
+      <span>もっと見る<br>→ Instagram</span>
+    </a>
+  </div>
+
+  <p class="insta-embed-note reveal">
+    ※ 上の枠には実際のInstagram投稿の画像を差し込むことができます。<br>
+    画像ファイルをご用意いただければ反映します。または
+    <a href="https://www.instagram.com/blu_bianco_moja2009/" target="_blank">@blu_bianco_moja2009</a>
+    から直接ご覧ください。
+  </p>
+
+  <div class="insta-follow-btn reveal">
+    <a href="https://www.instagram.com/blu_bianco_moja2009/" target="_blank" class="btn-insta">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Instagramをフォローする
+    </a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <h2 class="reveal">まずはお気軽に<br>DMでご相談ください😊</h2>
+  <p class="reveal">
+    日程・人数・ご要望など、なんでもお気軽にどうぞ。<br>
+    ハイライトの「質問箱Q&A」もご活用ください。
+  </p>
+  <a href="https://www.instagram.com/blu_bianco_moja2009/" target="_blank" class="btn-white reveal">
+    📩 InstagramでDMする
+  </a>
+  <p class="cta-note">@blu_bianco_moja2009</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">🍝 出張イタリアン moja</p>
+  <p class="footer-sub">神戸を中心に出張 ／ 神戸以外も対応可</p>
+  <div class="footer-links">
+    <a href="#scenes">こんな方に</a>
+    <a href="#plans">料金プラン</a>
+    <a href="#chef">シェフ紹介</a>
+    <a href="#instagram">Instagram</a>
+    <a href="https://www.instagram.com/blu_bianco_moja2009/" target="_blank">DMでお問い合わせ</a>
+  </div>
+  <p class="footer-copy">© 出張イタリアン moja</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.06 });
+  reveals.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
