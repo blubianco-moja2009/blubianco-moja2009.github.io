@@ -628,58 +628,22 @@
     gap: 12px;
   }
 
-  .chef-photo-placeholder {
+  .chef-photo-img {
     width: 180px;
     height: 180px;
     border-radius: 50%;
-    border: 2.5px dashed rgba(92,122,82,0.45);
-    background: var(--green-pale);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    cursor: pointer;
-    transition: background 0.2s, border-color 0.2s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .chef-photo-placeholder:hover {
-    background: #e0ead9;
-    border-color: var(--green);
+    object-fit: cover;
+    object-position: center top;
+    border: 4px solid var(--white);
+    box-shadow: 0 4px 20px rgba(92,122,82,0.2), 0 0 0 2px rgba(92,122,82,0.18);
+    display: block;
   }
 
   @media (min-width: 640px) {
-    .chef-photo-placeholder {
+    .chef-photo-img {
       width: 200px;
       height: 200px;
     }
-  }
-
-  .chef-photo-placeholder svg {
-    width: 36px;
-    height: 36px;
-    color: var(--green);
-    opacity: 0.6;
-  }
-
-  .chef-photo-placeholder .photo-hint {
-    font-size: 12px;
-    color: var(--green);
-    font-weight: 500;
-    opacity: 0.7;
-    text-align: center;
-    line-height: 1.5;
-    padding: 0 16px;
-  }
-
-  .chef-photo-note {
-    font-size: 11px;
-    color: var(--text-light);
-    text-align: center;
-    line-height: 1.6;
-    opacity: 0.7;
   }
 
   .chef-info {
@@ -915,6 +879,43 @@
     box-shadow: 0 8px 24px rgba(0,0,0,0.18);
   }
 
+  .cta-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+  }
+
+  @media (min-width: 480px) {
+    .cta-btns {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
+  .btn-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: #06C755;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 15px 36px;
+    border-radius: 99px;
+    text-decoration: none;
+    font-family: 'Noto Sans JP', sans-serif;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    letter-spacing: 0.04em;
+  }
+
+  .btn-line:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(6,199,85,0.35);
+  }
+
   .cta-note {
     margin-top: 14px;
     font-size: 12px;
@@ -1038,6 +1039,10 @@
       <a href="https://www.instagram.com/blu_bianco_moja2009/" target="_blank" class="btn btn-green">
         📩 インスタからDMする
       </a>
+      <a href="https://line.me/ti/p/~moja06030207" target="_blank" class="btn-line">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        LINEで問い合わせ
+      </a>
       <a href="#plans" class="btn btn-outline">料金を見る</a>
     </div>
   </div>
@@ -1067,7 +1072,7 @@
       <h3>お惣菜作り置きサービス</h3>
       <p>
         忙しい毎日の、心強い味方。<br>
-        週に一度シェフが訪問し、4日〜1週間分の作り置きをお作りします。<br><br>
+        シェフがご自宅に訪問し、4日〜1週間分の作り置きをお作りします。<br><br>
         約8〜12品の手作り惣菜で、毎日の食卓に<br>
         ほっとする「安心できる美味しさ」を。
       </p>
@@ -1097,7 +1102,7 @@
       </div>
       <div class="plan-price">
         <div class="price-num">¥10,000</div>
-        <div class="price-unit">〜 / お一人様</div>
+        <div class="price-unit">お一人様〜</div>
         <div class="price-note">食材費込み</div>
       </div>
     </div>
@@ -1189,19 +1194,12 @@
   </div>
   <div class="chef-inner reveal">
     <div class="chef-photo-wrap">
-      <div class="chef-photo-placeholder">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-          <circle cx="12" cy="13" r="4"/>
-        </svg>
-        <span class="photo-hint">シェフの写真<br>を挿入</span>
-      </div>
-      <p class="chef-photo-note">※ 写真データをご用意いただければ<br>こちらに反映します</p>
+      <img src="images/moja/chef.jpg" alt="シェフ" class="chef-photo-img">
     </div>
     <div class="chef-info">
       <p class="chef-eyebrow">Chef Profile</p>
-      <h3 class="chef-name">シェフ名</h3>
-      <p class="chef-name-en">Chef Name</p>
+      <h3 class="chef-name">民谷 明弘</h3>
+      <p class="chef-name-en">TAMIYA akihiro</p>
       <div class="chef-divider"></div>
       <p class="chef-bio">
         神戸を拠点に、ご家庭への出張料理を行っています。<br>
@@ -1259,13 +1257,6 @@
     </a>
   </div>
 
-  <p class="insta-embed-note reveal">
-    ※ 上の枠には実際のInstagram投稿の画像を差し込むことができます。<br>
-    画像ファイルをご用意いただければ反映します。または
-    <a href="https://www.instagram.com/blu_bianco_moja2009/" target="_blank">@blu_bianco_moja2009</a>
-    から直接ご覧ください。
-  </p>
-
   <div class="insta-follow-btn reveal">
     <a href="https://www.instagram.com/blu_bianco_moja2009/" target="_blank" class="btn-insta">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
@@ -1276,15 +1267,21 @@
 
 <!-- CTA -->
 <section class="cta-section" id="contact">
-  <h2 class="reveal">まずはお気軽に<br>DMでご相談ください😊</h2>
+  <h2 class="reveal">まずはお気軽に<br>ご相談ください😊</h2>
   <p class="reveal">
     日程・人数・ご要望など、なんでもお気軽にどうぞ。<br>
-    ハイライトの「質問箱Q&A」もご活用ください。
+    InstagramまたはLINEからご連絡いただけます。
   </p>
-  <a href="https://www.instagram.com/blu_bianco_moja2009/" target="_blank" class="btn-white reveal">
-    📩 InstagramでDMする
-  </a>
-  <p class="cta-note">@blu_bianco_moja2009</p>
+  <div class="cta-btns reveal">
+    <a href="https://line.me/ti/p/~moja06030207" target="_blank" class="btn-line">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      LINEで相談する
+    </a>
+    <a href="https://www.instagram.com/blu_bianco_moja2009/" target="_blank" class="btn-white">
+      📩 InstagramでDMする
+    </a>
+  </div>
+  <p class="cta-note">LINE ID: moja06030207 ／ Instagram: @blu_bianco_moja2009</p>
 </section>
 
 <!-- FOOTER -->
