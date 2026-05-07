@@ -542,9 +542,19 @@
   .philosophy .section-title { color: var(--text); }
   .philosophy .section-desc  { color: var(--text-light); }
 
+  .phil-image {
+    display: block;
+    max-width: 420px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto 32px;
+    border-radius: 18px;
+    box-shadow: 0 6px 24px rgba(92,122,82,0.14);
+  }
+
   .phil-grid {
     max-width: 760px;
-    margin: 36px auto 0;
+    margin: 0 auto 0;
     display: grid;
     grid-template-columns: 1fr;
     gap: 14px;
@@ -1165,6 +1175,7 @@
       それがmojaの存在理由です。
     </p>
   </div>
+  <img src="images/moja/philosophy.jpg" alt="mojaの想い" class="phil-image reveal">
   <div class="phil-grid">
     <div class="phil-card reveal">
       <p class="phil-label">Mission · 使命</p>
